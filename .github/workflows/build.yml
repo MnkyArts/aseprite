@@ -6,7 +6,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os: [windows-latest]
         build_type: [RelWithDebInfo, Debug]
         enable_ui: [off]
         include:
@@ -74,9 +74,9 @@ jobs:
     - name: Create ZIP Artifact
       if: runner.os == 'Windows'
       run: |
-        cd build
+        cd build/bin/aseprite
         chmod -R 777 .
-        tar -czvf ../aseprite_artifacts.tar.gz .
+        tar -czvf ../../../aseprite_artifacts.tar.gz .
       working-directory: ${{ github.workspace }}
     - name: Upload Artifact
       if: runner.os == 'Windows'
