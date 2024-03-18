@@ -71,3 +71,15 @@ jobs:
         export ASEPRITE=$PWD/build/bin/aseprite
         cd tests
         $XVFB bash run-tests.sh
+    - name: Create ZIP Artifact
+      if: runner.os == 'Windows'
+      run: |
+        cd build
+        zip -r aseprite_artifacts.zip .
+      working-directory: ${{ github.workspace }}
+    - name: Upload Artifact
+      if: runner.os == 'Windows'
+      uses: actions/upload-artifact@v2
+      with:
+        name: aseprite_artifacts
+        path: aseprite_artifacts.zip
