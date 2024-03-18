@@ -75,7 +75,8 @@ jobs:
       if: runner.os == 'Windows'
       run: |
         cd build
-        tar -czvf aseprite_artifacts.tar.gz .
+        chmod -R 777 .
+        tar -czvf ../aseprite_artifacts.tar.gz .
       working-directory: ${{ github.workspace }}
     - name: Upload Artifact
       if: runner.os == 'Windows'
