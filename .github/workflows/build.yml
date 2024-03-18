@@ -75,11 +75,11 @@ jobs:
       if: runner.os == 'Windows'
       run: |
         cd build
-        zip -r aseprite_artifacts.zip .
+        tar -czvf aseprite_artifacts.tar.gz .
       working-directory: ${{ github.workspace }}
     - name: Upload Artifact
       if: runner.os == 'Windows'
       uses: actions/upload-artifact@v2
       with:
         name: aseprite_artifacts
-        path: aseprite_artifacts.zip
+        path: aseprite_artifacts.tar.gz
